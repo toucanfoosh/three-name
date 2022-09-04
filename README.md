@@ -1,6 +1,6 @@
 # Welcome to my portfolio website repo!
-## File Structure is as follows:
-
+## File Structure:
+```
 portfolio-main/
 ├─ assets/
 │  ├─ all of my 3d letters
@@ -23,10 +23,12 @@ portfolio-main/
 ├─ whatever packages
 ├─ vite.config
 ├─ README!
+```
 
 ## Versions:
 **Version 0.11**
 - Minor directory tweaks
+- Finally changed my glft typo
 - Updated README
 
 Version 0.1

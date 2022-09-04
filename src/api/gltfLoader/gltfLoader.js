@@ -19,14 +19,14 @@ groundMesh.position.y = -2;
 mainGroup.add(groundMesh);
 
 // -----letters-----
-const glftLoader = new GLTFLoader();
+const gltfLoader = new GLTFLoader();
 // ---rock---
 let rockD, rockA, rockN, rockI, rockE, rockL;
 // texture
 const rockTexture = new THREE.TextureLoader().load('./assets/rock/rockTexture.jpg');
 // D
 
-glftLoader.load('./assets/rock/D.glb', function (letterD) {
+gltfLoader.load('./assets/rock/D.glb', function (letterD) {
     rockD = letterD;
 
     letterD.scene.traverse(function (node) {
@@ -45,7 +45,7 @@ glftLoader.load('./assets/rock/D.glb', function (letterD) {
 
 
 // A
-glftLoader.load('./assets/rock/A.glb', function (letterA) {
+gltfLoader.load('./assets/rock/A.glb', function (letterA) {
     rockA = letterA;
 
     letterA.scene.traverse(function (node) {
@@ -63,7 +63,7 @@ glftLoader.load('./assets/rock/A.glb', function (letterA) {
 });
 
 // N
-glftLoader.load('./assets/rock/N.glb', function (letterN) {
+gltfLoader.load('./assets/rock/N.glb', function (letterN) {
     rockN = letterN;
 
     letterN.scene.traverse(function (node) {
@@ -81,7 +81,7 @@ glftLoader.load('./assets/rock/N.glb', function (letterN) {
 });
 
 // I
-glftLoader.load('./assets/rock/I.glb', function (letterI) {
+gltfLoader.load('./assets/rock/I.glb', function (letterI) {
     rockI = letterI;
 
     letterI.scene.traverse(function (node) {
@@ -99,7 +99,7 @@ glftLoader.load('./assets/rock/I.glb', function (letterI) {
 });
 
 // E
-glftLoader.load('./assets/rock/E.glb', function (letterE) {
+gltfLoader.load('./assets/rock/E.glb', function (letterE) {
     rockE = letterE;
 
     letterE.scene.traverse(function (node) {
@@ -117,7 +117,7 @@ glftLoader.load('./assets/rock/E.glb', function (letterE) {
 });
 
 // L
-glftLoader.load('./assets/rock/L.glb', function (letterL) {
+gltfLoader.load('./assets/rock/L.glb', function (letterL) {
     rockL = letterL;
 
     letterL.scene.traverse(function (node) {
@@ -186,4 +186,4 @@ dlFolder
     .onChange((value) => dl.color.set(value));
 dlFolder.open();
 
-export default gltf
+export default gltfLoader

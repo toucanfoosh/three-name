@@ -3,12 +3,13 @@ import { useEffect, useState } from 'react';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { loadLetter } from './api';
 import * as THREE from 'three';
-import { letters } from './glft_config';
+import { letters } from './gltf_config';
 
 import SceneInit from './lib/SceneInit';
 
 function App() {
   const [LOADED_LETTERS, setLOADED_LETTERS] = useState({})
+  // let LOADED_LETTERS = {};
 
   useEffect(() => {
     const world = new SceneInit('mainCanvas');
@@ -29,10 +30,10 @@ function App() {
     mainGroup.add(groundMesh);
 
     // set up letters
-    const glftLoader = new GLTFLoader();
+    const gltfLoader = new GLTFLoader();
 
     letters.forEach( async (letter, index) => {
-      const letterObj = await loadLetter(glftLoader, world, letter, setLOADED_LETTERS)
+      const letterObj = await loadLetter(gltfLoader, world, letter, setLOADED_LETTERS)
       LOADED_LETTERS[letter.name] = letterObj
     })
 
