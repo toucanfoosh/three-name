@@ -84,12 +84,19 @@ export default class SceneInit {
 
     this.clock = new THREE.Clock();
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.controls.orbi
-    this.controls.maxPolarAngle = Math.PI / 2;
+
     // this.controls.enableZoom = false;
     // this.controls.enableRotate = false;
+    // this.controls.enablePan = false;
+
+    this.controls.screenSpacePanning = false;
+    
+    this.controls.maxPolarAngle = Math.PI / 2;
+    this.controls.minDistance = 0.9;
+    this.controls.maxDistance = 1100;
     this.controls.autoRotate = true;
     this.controls.autoRotateSpeed = .5;
+
     this.stats = Stats();
 
     // NOTE: show stats counter
@@ -107,6 +114,7 @@ export default class SceneInit {
     this.composer.render();
     this.stats.update();
     this.controls.update();
+
   }
 
   render() {

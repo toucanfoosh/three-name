@@ -26,7 +26,11 @@ portfolio-main/
 ```
 
 ## Versions:
-**Version 0.12**
+**Version 0.13**
+- Adjusted some camera settings
+- NOTE: I really need to stop spamming updates and take some time in between
+
+Version 0.12
 - Fixed issue with letters not showing
 - Cleaned up old files that weren't being used
 
