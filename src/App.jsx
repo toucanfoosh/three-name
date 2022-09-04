@@ -9,7 +9,6 @@ import SceneInit from './lib/SceneInit';
 
 function App() {
   const [LOADED_LETTERS, setLOADED_LETTERS] = useState({})
-  // let LOADED_LETTERS = {};
 
   useEffect(() => {
     const world = new SceneInit('mainCanvas');
@@ -41,7 +40,7 @@ function App() {
     const al = new THREE.AmbientLight(0xffffff, .5);
     mainGroup.add(al);
 
-    // setup directional light + helper
+    // setup directional light
     const dl = new THREE.DirectionalLight(0xffffff, 1.35);
     dl.position.set(1.5, 1.7, 5);
     const side = 50;
@@ -55,7 +54,6 @@ function App() {
 
     // dl.position.set(0, 2, 0);
     dl.castShadow = true;
-    const dlHelper = new THREE.DirectionalLightHelper(dl, 3);
     mainGroup.add(dl);
   }, []);
 

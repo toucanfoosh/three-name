@@ -26,7 +26,11 @@ portfolio-main/
 ```
 
 ## Versions:
-**Version 0.11**
+**Version 0.12**
+- Fixed issue with letters not showing
+- Cleaned up old files that weren't being used
+
+Version 0.11
 - Minor directory tweaks
 - Finally changed my glft typo
 - Updated README
