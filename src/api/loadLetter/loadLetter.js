@@ -5,7 +5,7 @@ const DEFAULT_SCALE = {
 }
 
 const loadLetter = async (
-    glftLoader,
+    gltfLoader,
     world,
     letter,
     setLOADED_LETTERS,
@@ -14,7 +14,7 @@ const loadLetter = async (
 
     let letterObj
 
-    glftLoader.load(letter.dir, (GLTF) => {
+    gltfLoader.load(letter.dir, (GLTF) => {
 
         letterObj = GLTF
 

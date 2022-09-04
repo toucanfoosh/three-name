@@ -1,4 +1,35 @@
+# Welcome to my portfolio website repo!
+## File Structure is as follows:
+
+portfolio-main/
+├─ assets/
+│  ├─ all of my 3d letters
+├─ images/
+│  ├─ all of my images
+├─ node-modules/
+├─ src/
+│  ├─ api/
+│  │  ├─ gltfLoader
+│  │  ├─ loadLetter
+│  │  ├─ pixelShader
+│  ├─ lib/
+│  │  ├─ SceneInit
+│  ├─ App.css
+│  ├─ App.jsx
+│  ├─ index.css
+│  ├─ main.jsx
+├─ .gitignore
+├─ index.html
+├─ whatever packages
+├─ vite.config
+├─ README!
+
+## Versions:
+**Version 0.11**
+- Minor directory tweaks
+- Updated README
+
 Version 0.1
-- Added a Pixel Shader
+- Added a pixel shader
 - Added a random letter model loader
 - Cleaned up some code

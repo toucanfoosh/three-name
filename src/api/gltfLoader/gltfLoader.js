@@ -186,4 +186,4 @@ dlFolder
     .onChange((value) => dl.color.set(value));
 dlFolder.open();
 
-export default glftLoader
+export default gltf

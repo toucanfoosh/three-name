@@ -9,7 +9,6 @@ import SceneInit from './lib/SceneInit';
 
 function App() {
   const [LOADED_LETTERS, setLOADED_LETTERS] = useState({})
-  // let LOADED_LETTERS = {};
 
   useEffect(() => {
     const world = new SceneInit('mainCanvas');
