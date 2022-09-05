@@ -11,6 +11,8 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 import RenderPixelatedPass from "./../api/pixelShader/RenderPixelatedPass"
 import PixelatePass from "./../api/pixelShader/PixelatePass"
 
+import { spiral } from './Math';
+
 export default class SceneInit {
   constructor(canvasId) {
     // NOTE: Core components to initialize Three.js app.
@@ -33,6 +35,13 @@ export default class SceneInit {
     // NOTE: Lighting is basically required.
     this.spotLight = undefined;
     this.ambientLight = undefined;
+
+    this.justLaunched = true;
+    this.t = 0;
+    this.spiralWidth = 4;
+    this.scale = 5;
+    this.limit = 7.7;
+    this.inc = .05;
   }
 
   initialize() {
@@ -60,7 +69,8 @@ export default class SceneInit {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     document.body.appendChild(this.renderer.domElement);
 
-    let screenResolution = new Vector2(window.innerWidth, window.innerHeight)
+    let renderMultiplier = 2
+    let screenResolution = new Vector2(window.innerWidth * renderMultiplier, window.innerHeight * renderMultiplier)
     let renderResolution = screenResolution.clone().divideScalar(6)
     renderResolution.x |= 0
     renderResolution.y |= 0
@@ -85,17 +95,18 @@ export default class SceneInit {
     this.clock = new THREE.Clock();
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
-    // this.controls.enableZoom = false;
-    // this.controls.enableRotate = false;
-    // this.controls.enablePan = false;
-
     this.controls.screenSpacePanning = false;
-    
+
+    this.justLaunched == false;
+    this.controls.enableZoom = false;
+    this.controls.enableRotate = false;
+    this.controls.enablePan = false;
+
     this.controls.maxPolarAngle = Math.PI / 2;
     this.controls.minDistance = 0.9;
     this.controls.maxDistance = 1100;
     this.controls.autoRotate = true;
-    this.controls.autoRotateSpeed = .5;
+    this.controls.autoRotateSpeed = 0.5;
 
     this.stats = Stats();
 
@@ -114,7 +125,26 @@ export default class SceneInit {
     this.composer.render();
     this.stats.update();
     this.controls.update();
+    if (this.justLaunched == true) {
+      this.intro();
+    }
+  }
 
+  intro() {
+    if (this.t < this.limit) {
+      let coord = spiral(this.t, this.spiralWidth);
+      this.camera.position.x = coord[0] * this.scale;
+      this.camera.position.z = coord[1] * this.scale;
+      console.log(this.t);
+      this.t += this.inc;
+      this.inc = this.inc * .994;
+    } else {
+      this.justLaunched == false;
+
+      this.controls.enableZoom = true;
+      this.controls.enableRotate = true;
+      this.controls.enablePan = true;
+    }
   }
 
   render() {

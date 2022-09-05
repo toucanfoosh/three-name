@@ -26,7 +26,11 @@ portfolio-main/
 ```
 
 ## Versions:
-**Version 0.13**
+**Version 0.14**
+- Added a justLoaded checker in SceneInit
+- Added some math and stuff to have a spiral effect on load
+
+Version 0.13
 - Adjusted some camera settings
 - NOTE: I really need to stop spamming updates and take some time in between
 
