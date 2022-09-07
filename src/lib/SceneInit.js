@@ -148,7 +148,7 @@ export default class SceneInit {
 
     // if window resizes
     window.addEventListener('resize', () => this.onWindowResize(), false);
-    window.addEventListener('keydown',  this.onDocumentKeyDown.bind(this), false);
+    window.addEventListener('click', this.onDocumentKeyDown.bind(this), false);
 
   }
   animate() {
@@ -213,21 +213,18 @@ export default class SceneInit {
     this.composer.setSize(window.innerWidth, window.innerHeight);
   }
   onDocumentKeyDown(event) {
-    var keyCode = event.which;
-    if (keyCode == 32) {
-      if (this.pixels){
-        this.composer.removePass(this.renderPixelatedPass);
-        this.composer.removePass(this.bloomPass);
-        this.composer.removePass(this.pixelatePass);
-        this.pixels = false;
+    if (this.pixels) {
+      this.composer.removePass(this.renderPixelatedPass);
+      this.composer.removePass(this.bloomPass);
+      this.composer.removePass(this.pixelatePass);
+      this.pixels = false;
 
-      } else {
-        this.composer.addPass(this.renderPixelatedPass);
-        this.composer.addPass(this.bloomPass);
-        this.composer.addPass(this.pixelatePass);
-        this.pixels = true;
+    } else {
+      this.composer.addPass(this.renderPixelatedPass);
+      this.composer.addPass(this.bloomPass);
+      this.composer.addPass(this.pixelatePass);
+      this.pixels = true;
 
-      }
     }
   };
 

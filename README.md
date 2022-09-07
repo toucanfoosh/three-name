@@ -28,7 +28,10 @@ THREE-name/
 ```
 
 ## Versions:
-**Version 0.2**
+**Version 0.21**
+- Changed from space to click
+
+Version 0.2
 - Added a pan up
 - Added spacebar bind to enable/disable pixel shader
 
