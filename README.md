@@ -1,7 +1,7 @@
-# Welcome to my portfolio website repo!
+# Welcome to my THREE.js tech demo!
 ## File Structure:
 ```
-portfolio-main/
+THREE-name/
 ├─ assets/
 │  ├─ all of my 3d letters
 │  ├─ grass texture
@@ -24,13 +24,19 @@ portfolio-main/
 ├─ index.html
 ├─ whatever packages
 ├─ vite.config
-├─ README!
+└─ README!
 ```
 
 ## Versions:
-**Version 0.15**
+**Version 0.2**
+- Added a pan up
+- Added spacebar bind to enable/disable pixel shader
+
+
+Version 0.15
 - Added grass!
 - Fixed bug where shader resolution wouldn't update on screen resize
+- Cleaned up code to have App.jsx cleaner
 
 Version 0.14
 - Added a justLoaded checker in SceneInit

@@ -1,7 +1,6 @@
 
 const letterTypes = ['rock'];
 let rand = letterTypes[Math.floor(Math.random() * letterTypes.length)];
-console.log(rand);
 const letters = [
     {
         dir: './assets/' + rand + '/D.glb',
