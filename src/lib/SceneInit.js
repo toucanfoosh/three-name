@@ -13,6 +13,12 @@ import PixelatePass from "./../api/pixelShader/PixelatePass"
 
 import { spiral } from './Math';
 
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { loadLetter } from './../api';
+import { letters } from './../gltf_config';
+
+import { useState } from 'react';
+
 export default class SceneInit {
   constructor(canvasId) {
     // NOTE: Core components to initialize Three.js app.
@@ -37,8 +43,9 @@ export default class SceneInit {
     this.ambientLight = undefined;
 
     this.justLaunched = true;
+
     this.t = 0;
-    this.spiralWidth = 4;
+    this.spiralWidth = 2;
     this.scale = 5;
     this.limit = 7.7;
     this.inc = .05;
@@ -69,7 +76,9 @@ export default class SceneInit {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     document.body.appendChild(this.renderer.domElement);
 
-    let renderMultiplier = 2
+    // NOTE: Higher renderMultiplier = more pixels on screen = clearer picture
+    let renderMultiplier = 1.7
+
     let screenResolution = new Vector2(window.innerWidth * renderMultiplier, window.innerHeight * renderMultiplier)
     let renderResolution = screenResolution.clone().divideScalar(6)
     renderResolution.x |= 0
@@ -117,7 +126,6 @@ export default class SceneInit {
     window.addEventListener('resize', () => this.onWindowResize(), false);
 
   }
-
   animate() {
     // NOTE: Window is implied.
     // requestAnimationFrame(this.animate.bind(this));
@@ -135,7 +143,6 @@ export default class SceneInit {
       let coord = spiral(this.t, this.spiralWidth);
       this.camera.position.x = coord[0] * this.scale;
       this.camera.position.z = coord[1] * this.scale;
-      console.log(this.t);
       this.t += this.inc;
       this.inc = this.inc * .994;
     } else {
@@ -157,5 +164,50 @@ export default class SceneInit {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.composer.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  worldSetup() {
+    
+    // main group
+    const mainGroup = new THREE.Group();
+    mainGroup.position.y = 0.5;
+    this.scene.add(mainGroup);
+
+    // set up ground
+
+    const groundSize = 5000
+
+    const groundGeometry = new THREE.BoxGeometry(groundSize, 1, groundSize);
+
+    const grassMaterial = new THREE.TextureLoader().load('./assets/grass_top.jpeg');
+    grassMaterial.wrapS = grassMaterial.wrapT = THREE.RepeatWrapping;
+    grassMaterial.repeat.set(groundSize, groundSize);
+
+    const groundMaterial = new THREE.MeshStandardMaterial({ map: grassMaterial });
+    const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
+    groundMesh.receiveShadow = true;
+    groundMesh.position.y = -2;
+    mainGroup.add(groundMesh);
+
+    // set up ambient light
+    const al = new THREE.AmbientLight(0xffffff, .5);
+    mainGroup.add(al);
+
+    // setup directional light
+    const dl = new THREE.DirectionalLight(0xffffff, 1.35);
+    dl.position.set(1.5, 1.7, 5);
+    const side = 50;
+    dl.shadow.camera.top = -side;
+    dl.shadow.camera.right = side;
+    dl.shadow.camera.left = -side;
+    dl.shadow.camera.bottom = side;
+    dl.shadow.mapSize.x = 8192;
+    dl.shadow.mapSize.y = 8192;
+
+
+    // dl.position.set(0, 2, 0);
+    dl.castShadow = true;
+    mainGroup.add(dl);
   }
 }

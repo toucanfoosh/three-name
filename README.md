@@ -4,6 +4,7 @@
 portfolio-main/
 ├─ assets/
 │  ├─ all of my 3d letters
+│  ├─ grass texture
 ├─ images/
 │  ├─ all of my images
 ├─ node-modules/
@@ -13,6 +14,7 @@ portfolio-main/
 │  │  ├─ loadLetter
 │  │  ├─ pixelShader
 │  ├─ lib/
+│  │  ├─ Math
 │  │  ├─ SceneInit
 │  ├─ App.css
 │  ├─ App.jsx
@@ -26,7 +28,11 @@ portfolio-main/
 ```
 
 ## Versions:
-**Version 0.14**
+**Version 0.15**
+- Added grass!
+- Fixed bug where shader resolution wouldn't update on screen resize
+
+Version 0.14
 - Added a justLoaded checker in SceneInit
 - Added some math and stuff to have a spiral effect on load
 
